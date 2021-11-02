@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewWorld-Group-helper", "NewWorld-Group-helper\NewWorld-Group-helper.csproj", "{11AB7D3C-0A90-46DE-A6BE-D184A04D26E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11AB7D3C-0A90-46DE-A6BE-D184A04D26E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11AB7D3C-0A90-46DE-A6BE-D184A04D26E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11AB7D3C-0A90-46DE-A6BE-D184A04D26E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11AB7D3C-0A90-46DE-A6BE-D184A04D26E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39C666C0-626A-4610-8FF7-83D28CFF6373}
+	EndGlobalSection
+EndGlobal

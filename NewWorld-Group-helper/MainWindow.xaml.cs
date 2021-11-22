@@ -70,7 +70,20 @@ namespace NewWorld_Group_helper
         private async void btnPlayerSearch_Click(object sender, RoutedEventArgs e)
         {
             // Search database for player info and print
+
             Player player = new Player(txtBoxIGNSearch.Text, "", "", "");
+            
+            if (true)
+            {
+                
+            }
+            else
+            {
+                System.Exception exception = new System.Exception("");
+                throw exception;
+               
+            }
+            
             FirebaseResponse response = await client.GetAsync($"Players/{player.IngameName}");
             player = response.ResultAs<Player>();
 

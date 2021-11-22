@@ -41,9 +41,9 @@
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         
-        <Button x:Name="btnAddPlayer" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="Add Player" Click="btnAddPlayer_Click"/>
-        <Button x:Name="btnSearchPlayer" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="Search Player" Click="btnSearchPlayer_Click"/>
-        <Button x:Name="btnSearchRole" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="Search Role" Click="btnSearchRole_Click"/>
+        <Button x:Name="btnAddPlayer" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="Add Player" Click="btnAddPlayer_Click" IsEnabled="False"/>
+        <Button x:Name="btnSearchPlayer" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="Search Player" Click="btnSearchPlayer_Click" IsEnabled="False"/>
+        <Button x:Name="btnSearchRole" Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="2" Content="Search Role" Click="btnSearchRole_Click" IsEnabled="False"/>
         <Button x:Name="DBAccessBtn" Grid.Column="4" Grid.Row="2" Content="Connect" Grid.RowSpan="2" Click="DBAccessBtn_Click"/>
 
         <Grid x:Name="Grid_New_Player" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="17" Background="LightGray" Visibility="Hidden">
@@ -95,6 +95,7 @@
                 <ComboBoxItem FontSize="16">Fire Staff</ComboBoxItem>
                 <ComboBoxItem FontSize="16">Life Staff</ComboBoxItem>
                 <ComboBoxItem FontSize="16">Ice Gauntlet</ComboBoxItem>
+                <ComboBoxItem FontSize="16">Void Gauntlet</ComboBoxItem>
             </ComboBox>
 
             <TextBlock Margin="20,2" Grid.Row="7" Grid.Column="0" Text="Secondary Weapon" FontSize="16" TextAlignment="Center" Background="LightCyan"/>
@@ -111,12 +112,13 @@
                 <ComboBoxItem FontSize="16">Fire Staff</ComboBoxItem>
                 <ComboBoxItem FontSize="16">Life Staff</ComboBoxItem>
                 <ComboBoxItem FontSize="16">Ice Gauntlet</ComboBoxItem>
+                <ComboBoxItem FontSize="16">Void Gauntlet</ComboBoxItem>
             </ComboBox>
 
             <Button x:Name="btnAddPlayerToDB" Content="Add" Margin="40,5" Background="DarkGray" Grid.Column="1" Grid.Row="11" Click="btnAddPlayerToDB_Click"/>
         </Grid>
         
-        <Grid x:Name="Grid_Search_Player" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="17" Background="LightGray" Visibility="Visible">
+        <Grid x:Name="Grid_Search_Player" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="17" Background="LightGray" Visibility="Hidden">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>

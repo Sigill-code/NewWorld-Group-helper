@@ -117,6 +117,9 @@ namespace NewWorld_Group_helper
                 MessageBox.Show("Connection is established.");
             }
 
+            btnAddPlayer.IsEnabled = true;
+            btnSearchPlayer.IsEnabled = true;
+
         }
     }
 }

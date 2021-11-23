@@ -47,7 +47,7 @@ namespace NewWorld_Group_helper
 
             Player TestPlayer = new Player { Role = PlayerRole.Text, MainWeapon = PlayerMainWeapon.Text, SecondaryWeapon = PlayerSecondaryWeapon.Text };
 
-            await client.SetAsync($"Players/{player.IngameName}", TestPlayer);
+            await client.SetAsync($"Players/{player.IngameName.ToUpper()}", TestPlayer);
         }
 
         private void btnSearchPlayer_Click(object sender, RoutedEventArgs e)
@@ -72,22 +72,10 @@ namespace NewWorld_Group_helper
             // Search database for player info and print
 
             Player player = new Player(txtBoxIGNSearch.Text, "", "", "");
-            
-            if (true)
-            {
-                
-            }
-            else
-            {
-                System.Exception exception = new System.Exception("");
-                throw exception;
-               
-            }
-            
-            FirebaseResponse response = await client.GetAsync($"Players/{player.IngameName}");
+            FirebaseResponse response = await client.GetAsync($"Players/{player.IngameName.ToUpper()}");
             player = response.ResultAs<Player>();
 
-            if (response != null)
+            if (response.Body != "null")
             {
                 RoleOutput.Text = player.Role;
                 MainWeaponOutput.Text = player.MainWeapon;

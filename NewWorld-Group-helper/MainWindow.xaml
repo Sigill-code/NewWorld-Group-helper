@@ -166,7 +166,7 @@
        
         </Grid>
 
-        <Grid x:Name="Grid_Search_Role" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="6" Grid.RowSpan="17" Background="LightGray" Visibility="Visible">
+        <Grid x:Name="Grid_Search_Role" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="6" Grid.RowSpan="17" Background="LightGray" Visibility="Hidden">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="200"/>

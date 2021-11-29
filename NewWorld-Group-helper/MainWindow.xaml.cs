@@ -26,18 +26,7 @@ namespace NewWorld_Group_helper
         private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
         {
             // Makes "Add Player" tab visible and the other tabs invisible.
-            if (Grid_New_Player.Visibility == Visibility.Visible)
-            {
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                Grid_New_Player.Visibility = Visibility.Visible;
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
+            Grid_New_Player.Visibility = Visibility.Visible;
         }
         
         private async void btnAddPlayerToDB_Click(object sender, RoutedEventArgs e)
@@ -53,18 +42,8 @@ namespace NewWorld_Group_helper
         private void btnSearchPlayer_Click(object sender, RoutedEventArgs e)
         {
             // Makes "Search Player" tab visible and the other tabs invisible.
-            if (Grid_Search_Player.Visibility == Visibility.Visible)
-            {
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Player.Visibility = Visibility.Visible;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
+            
+            Grid_Search_Player.Visibility = Visibility.Visible;
         }
 
         private async void btnPlayerSearch_Click(object sender, RoutedEventArgs e)
@@ -90,18 +69,9 @@ namespace NewWorld_Group_helper
         private void btnSearchRole_Click(object sender, RoutedEventArgs e)
         {
             // Makes "Search Role" tab visible and the other tabs invisible.
-            if (Grid_Search_Role.Visibility == Visibility.Visible)
-            {
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Visible;
-            }
+            
+            Grid_Search_Role.Visibility = Visibility.Visible;
+            
         }
 
         private void btnRoleSearch_Click(object sender, RoutedEventArgs e)
@@ -121,6 +91,16 @@ namespace NewWorld_Group_helper
             btnAddPlayer.IsEnabled = true;
             btnSearchPlayer.IsEnabled = true;
 
+        }
+
+        private void AddPlayerBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Grid_New_Player.Visibility = Visibility.Hidden;
+        }
+
+        private void SearchPlayerBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Grid_Search_Player.Visibility = Visibility.Hidden;
         }
     }
 }

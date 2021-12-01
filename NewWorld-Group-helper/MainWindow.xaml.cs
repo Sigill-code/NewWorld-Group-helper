@@ -26,18 +26,7 @@ namespace NewWorld_Group_helper
         private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
         {
             // Makes "Add Player" tab visible and the other tabs invisible.
-            if (Grid_New_Player.Visibility == Visibility.Visible)
-            {
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                Grid_New_Player.Visibility = Visibility.Visible;
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
+            Grid_New_Player.Visibility = Visibility.Visible;
         }
         
         private async void btnAddPlayerToDB_Click(object sender, RoutedEventArgs e)
@@ -47,34 +36,25 @@ namespace NewWorld_Group_helper
 
             Player TestPlayer = new Player { Role = PlayerRole.Text, MainWeapon = PlayerMainWeapon.Text, SecondaryWeapon = PlayerSecondaryWeapon.Text };
 
-            await client.SetAsync($"Players/{player.IngameName}", TestPlayer);
+            await client.SetAsync($"Players/{player.IngameName.ToUpper()}", TestPlayer);
         }
 
         private void btnSearchPlayer_Click(object sender, RoutedEventArgs e)
         {
             // Makes "Search Player" tab visible and the other tabs invisible.
-            if (Grid_Search_Player.Visibility == Visibility.Visible)
-            {
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Player.Visibility = Visibility.Visible;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
+            
+            Grid_Search_Player.Visibility = Visibility.Visible;
         }
 
         private async void btnPlayerSearch_Click(object sender, RoutedEventArgs e)
         {
             // Search database for player info and print
+
             Player player = new Player(txtBoxIGNSearch.Text, "", "", "");
-            FirebaseResponse response = await client.GetAsync($"Players/{player.IngameName}");
+            FirebaseResponse response = await client.GetAsync($"Players/{player.IngameName.ToUpper()}");
             player = response.ResultAs<Player>();
 
-            if (response != null)
+            if (response.Body != "null")
             {
                 RoleOutput.Text = player.Role;
                 MainWeaponOutput.Text = player.MainWeapon;
@@ -89,18 +69,9 @@ namespace NewWorld_Group_helper
         private void btnSearchRole_Click(object sender, RoutedEventArgs e)
         {
             // Makes "Search Role" tab visible and the other tabs invisible.
-            if (Grid_Search_Role.Visibility == Visibility.Visible)
-            {
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                Grid_New_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Player.Visibility = Visibility.Hidden;
-                Grid_Search_Role.Visibility = Visibility.Visible;
-            }
+            
+            Grid_Search_Role.Visibility = Visibility.Visible;
+            
         }
 
         private void btnRoleSearch_Click(object sender, RoutedEventArgs e)
@@ -117,6 +88,19 @@ namespace NewWorld_Group_helper
                 MessageBox.Show("Connection is established.");
             }
 
+            btnAddPlayer.IsEnabled = true;
+            btnSearchPlayer.IsEnabled = true;
+
+        }
+
+        private void AddPlayerBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Grid_New_Player.Visibility = Visibility.Hidden;
+        }
+
+        private void SearchPlayerBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Grid_Search_Player.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -2,6 +2,8 @@
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using System.Threading.Tasks;
+using Squirrel;
 
 
 namespace NewWorld_Group_helper
@@ -17,12 +19,11 @@ namespace NewWorld_Group_helper
             BasePath = "https://nwgh-player-db-default-rtdb.firebaseio.com/"
         };
         IFirebaseClient client;
-        
         public MainWindow()
         {
             InitializeComponent();
+            CheckForUpdate();
         }
-
         private void btnAddPlayer_Click(object sender, RoutedEventArgs e)
         {
             // Makes "Add Player" tab visible and the other tabs invisible.
@@ -39,7 +40,6 @@ namespace NewWorld_Group_helper
                 Grid_Search_Role.Visibility = Visibility.Hidden;
             }
         }
-        
         private async void btnAddPlayerToDB_Click(object sender, RoutedEventArgs e)
         {
             // Add player info to database
@@ -49,7 +49,6 @@ namespace NewWorld_Group_helper
 
             await client.SetAsync($"Players/{player.IngameName}", TestPlayer);
         }
-
         private void btnSearchPlayer_Click(object sender, RoutedEventArgs e)
         {
             // Makes "Search Player" tab visible and the other tabs invisible.
@@ -66,26 +65,33 @@ namespace NewWorld_Group_helper
                 Grid_Search_Role.Visibility = Visibility.Hidden;
             }
         }
-
         private async void btnPlayerSearch_Click(object sender, RoutedEventArgs e)
         {
             // Search database for player info and print
-            Player player = new Player(txtBoxIGNSearch.Text, "", "", "");
-            FirebaseResponse response = await client.GetAsync($"Players/{player.IngameName}");
-            player = response.ResultAs<Player>();
-
-            if (response != null)
+            Player player = new Player(txtBoxIGNSearch.Text, " ", " ", " ");
+            FirebaseResponse response;
+            try
             {
+               
+                response = await client.GetAsync($"Players/{player.IngameName}");
+                if(response.Body == "null")
+                {
+                    throw new System.Exception("Item does not exist!");
+                }
+                player = response.ResultAs<Player>();
+
+                System.Console.WriteLine();
                 RoleOutput.Text = player.Role;
                 MainWeaponOutput.Text = player.MainWeapon;
                 SecondaryWeaponOutput.Text = player.SecondaryWeapon;   
+              
             }
-            else
+            catch (System.Exception ex)
             {
-                MessageBox.Show("Item does not exist");
+
+                    MessageBox.Show(ex.Message);
             }
         }
-        
         private void btnSearchRole_Click(object sender, RoutedEventArgs e)
         {
             // Makes "Search Role" tab visible and the other tabs invisible.
@@ -102,12 +108,10 @@ namespace NewWorld_Group_helper
                 Grid_Search_Role.Visibility = Visibility.Visible;
             }
         }
-
         private void btnRoleSearch_Click(object sender, RoutedEventArgs e)
         {
             // Search database for the input (role) and displays a list of players with that input.
         }
-
         private void DBAccessBtn_Click(object sender, RoutedEventArgs e)
         {
             client = new FireSharp.FirebaseClient(config);
@@ -117,6 +121,19 @@ namespace NewWorld_Group_helper
                 MessageBox.Show("Connection is established.");
             }
 
+            btnAddPlayer.IsEnabled = true;
+            btnSearchPlayer.IsEnabled = true;
+            btnSearchRole.IsEnabled = true;
+
+        }
+
+
+        private async Task CheckForUpdate()
+        {
+            using (var manager = new UpdateManager(@"C:\Users\jimm6288\source\repos\NewWorld-Group-helper\NewWorld-Group-helper\obj\Release"))
+            {
+                await manager.UpdateApp();
+            }
         }
     }
 }

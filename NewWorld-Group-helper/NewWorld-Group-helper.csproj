@@ -6,10 +6,24 @@
     <RootNamespace>NewWorld_Group_helper</RootNamespace>
     <UseWPF>true</UseWPF>
     <SignAssembly>true</SignAssembly>
+    <RepositoryUrl>https://github.com/Sigill-code/NewWorld-Group-helper</RepositoryUrl>
+    <PackageTags>New-World</PackageTags>
+    <NeutralLanguage></NeutralLanguage>
+    <PackageIcon>GrowingCrop.png</PackageIcon>
+    <Copyright>Sigill-Code</Copyright>
+    <Description>A program that should help people assemble a group in New World, you can add people to the system, and search players, seeing what weapons they use, and role that they are.</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FireSharp" Version="2.0.4" />
+    <PackageReference Include="squirrel.windows" Version="1.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\Skrivebord\ROD\Skrivebord\kunst\png\GrowingCrop.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
